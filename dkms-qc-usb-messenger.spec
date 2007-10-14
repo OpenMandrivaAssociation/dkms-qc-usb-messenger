@@ -1,9 +1,9 @@
 %define module_name qc-usb-messenger
-%define version 1.3
+%define version 1.7
 
 Name:		dkms-%{module_name}
 Version:	%version
-Release:	%mkrel 2
+Release:	%mkrel 1
 Summary:	DKMS-ready driver for the Quickcam USB Messenger
 License:	GPL
 Source:		http://home.mag.cx/messenger/source/%{module_name}-%{version}.tar.bz2
@@ -51,7 +51,7 @@ EOF
 
 %preun
   dkms remove -m %{modname} -v %{version}-%{release} --rpm_safe_upgrade --all
-	
+
 %clean
 rm -rf %{buildroot}
 
