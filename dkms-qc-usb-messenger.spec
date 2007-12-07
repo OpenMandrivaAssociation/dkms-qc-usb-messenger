@@ -3,15 +3,16 @@
 
 Name:		dkms-%{module_name}
 Version:	%version
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	DKMS-ready driver for the Quickcam USB Messenger
 License:	GPL
 Source:		http://home.mag.cx/messenger/source/%{module_name}-%{version}.tar.bz2
+Patch0:   kernel-2.6.24.patch
 Group:		Development/Kernel
 Requires(pre):	dkms
 Requires(post): dkms
-Buildroot:	%{_tmppath}/%{name}-%{version}-root
-Buildarch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+BuildArch:	noarch
 Obsoletes:	%{module_name}-dkms
 Provides:	%{module_name}-dkms
 
@@ -22,7 +23,12 @@ Messenger.
 
 %prep
 %setup -q -c -n %{module_name}-%{version}
+pushd %{module_name}-%{version}
+%patch0 -p1 -b .2624
+popd
+# Ha
 chmod -R go=u-w .
+
 
 %build
 
