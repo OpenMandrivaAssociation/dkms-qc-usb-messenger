@@ -11,7 +11,6 @@ Patch0:   kernel-2.6.24.patch
 Group:		Development/Kernel
 Requires(pre):	dkms
 Requires(post): dkms
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 BuildArch:	noarch
 Obsoletes:	%{module_name}-dkms
 Provides:	%{module_name}-dkms
