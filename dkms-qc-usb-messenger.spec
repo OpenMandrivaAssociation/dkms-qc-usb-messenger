@@ -3,7 +3,7 @@
 
 Name:		dkms-%{module_name}
 Version:	%version
-Release:	%mkrel 4
+Release:	%mkrel 5
 Summary:	DKMS-ready driver for the Quickcam USB Messenger
 License:	GPL
 Source:		http://home.mag.cx/messenger/source/%{module_name}-%{version}.tar.bz2
