@@ -1,0 +1,28 @@
+Hardware field has been removed:
+http://lists.berlios.de/pipermail/linux-uvc-devel/2007-November/002410.html
+
+Input handling has changed:
+http://www.linuxhq.com/kernel/v2.6/24-rc2/Documentation/input/input-programming.txt
+
+
+--- source/qc-driver.c	2007-10-14 12:11:16.000000000 +0100
++++ build/qc-driver.c	2007-12-07 16:55:36.000000000 +0000
+@@ -3481,7 +3481,6 @@
+ static struct video_device qc_v4l_template = {
+ 	name:		"QuickCam USB",
+ 	type:		VID_TYPE_CAPTURE, // | VID_TYPE_SUBCAPTURE,
+-	hardware:	VID_HARDWARE_QCAM_USB,
+ 	minor:		-1,
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,0)
+ 	release:	qc_v4l_release,
+@@ -3657,8 +3656,8 @@
+ 	/* Register input device for button */
+ 	qc->input_ptr->name = "Quickcam snapshot button";
+ 	qc->input_ptr->private = qc;
+-	qc->input_ptr->evbit[0] = BIT(EV_KEY);
+-	qc->input_ptr->keybit[LONG(BTN_0)] = BIT(BTN_0);
++	qc->input_ptr->evbit[0] = BIT_MASK(EV_KEY);
++	qc->input_ptr->keybit[BIT_WORD(BTN_0)] = BIT_MASK(BTN_0);
+ 
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,0)
+ 	qc->input_ptr->id.bustype = BUS_USB;
